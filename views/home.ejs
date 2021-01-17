@@ -1,0 +1,19 @@
+<%- include('partial/header.ejs' ,{id:id,data:data}); %>
+    <h1>Home</h1>
+    <h2><%= homeStartingContent %> </h2>
+    <h3 style="color:#007965;"><i><- In case composed data is not visible Please refresh page It will get Visible   -></i></h3>
+    <div class="flexi">
+      <% for(var i=0;i<content.length;i++){ %>
+        <div class="log">
+          <h1 style="color:#654062;"><%= content[i].title %></h1>
+          <p><strong><%= content[i].msg.substring(0,50) %> ...</strong></p>
+
+          <a href="/posts/<%= id %>/<%= data %>/<%= content[i].title %>" style="margin-bottom:8px;"><strong><i>read more</i></strong></a>
+          <form  action="/<%= id %>/<%= data %>/delete" method="post">
+            <button type="submit" class="btn btn-primary"  name="but" value="<%= content[i].id%>">Delete</button>
+          </form>
+        </div>
+  <%  } %>
+    </div>
+
+<%- include('partial/footer',{id:id,data:data}) %>
